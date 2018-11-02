@@ -14,7 +14,10 @@ remove_action('genesis_loop', 'genesis_do_loop');//remove genesis loop
 
 
 $current_user = wp_get_current_user();
-//print_r($current_user);
+echo '<pre>';
+print_r($current_user);
+echo '</pre>';
+
 /*
 Timestamp
 ClientID
@@ -34,24 +37,22 @@ Phone
 Group
 */
 
-/*
- * @example Safe usage: $current_user = wp_get_current_user();
- * if ( ! ( $current_user instanceof WP_User ) ) {
- *     return;
- * }
- */
-printf( __( 'Username: %s', 'textdomain' ), esc_html( $current_user->user_login ) );
-echo '<br />';
-printf( __( 'User email: %s', 'textdomain' ), esc_html( $current_user->user_email ) );
-echo '<br />';
-printf( __( 'User first name: %s', 'textdomain' ), esc_html( $current_user->user_firstname ) );
-echo '<br />';
-printf( __( 'User last name: %s', 'textdomain' ), esc_html( $current_user->user_lastname ) );
-echo '<br />';
-printf( __( 'User display name: %s', 'textdomain' ), esc_html( $current_user->display_name ) );
-echo '<br />';
-printf( __( 'User ID: %s', 'textdomain' ), esc_html( $current_user->ID ) );
 
-// prepare parameters to be passed to the gateway 
-// params-output("clientId", "123); 
- 
+$timestamp = time();
+$userid = esc_html( $current_user->ID );
+$userfirstname = esc_html( $current_user->user_firstname );
+$userlastname = esc_html( $current_user->user_lastname );
+$useremail = esc_html( $current_user->user_email );
+$userdisplayname = esc_html( $current_user->display_name );
+$userlogin = esc_html( $current_user->user_login );
+
+// so in order as above
+
+echo " <br> $timestamp $userid $userfirstname $userlastname $useremail $userdisplayname $userlogin";
+
+
+
+
+
+
+
